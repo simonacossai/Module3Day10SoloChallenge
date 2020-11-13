@@ -1,43 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row detailDiv">
 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="detail.css">
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand mt-5" href="#"><a href="https://fontmeme.com/netflix-font/"><img
+                    src="https://fontmeme.com/permalink/201016/43d068e8e91bfc2ab70c55cd3afe6508.png" alt="netflix-font"
+                    border="0" class="mt-2"></a></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tv shows</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="backoffice.html">Add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My list</a>
+                </li>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <i class="fas fa-search mr-sm-2"></i>
+                <a class="nav-link mr-sm-2">KIDS</a>
+                <a href="settings.html"><i class="fas fa-bell"></i></a>
+                <a href="account.html"> <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png"
+                        width=30></a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+            </form>
+        </div>
+    </nav>
+    <!--NAVBAR END-->
+    <div class="container mt-5">
+        <div class="row detailDiv " style="margin-top: 200px;">
+            <div class="col-6" id="image">
+
+            </div>
+            <div class="col-6" id="details">
+            </div>
         </div>
     </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script>
+        window.onload = async () => {
+
+            const url = "https://striveschool-api.herokuapp.com/api/movies/";
+            let urlParams = await new URLSearchParams(window.location.search);
+            id = urlParams.get("id");
+            console.log(id);
+
+            elements = id.split("|");
+            let title = elements[0];
+            let category = elements[1];
+            let description = elements[2];
+            let image = elements[3];
+            console.log(title, category, description, image);
 
 
 
+            let imageDiv = document.querySelector("#image");
+            let detailDiv = document.querySelector("#details");
 
-
-
-<script>
-    window.onload = async ()=>{
-        let id;
-        const url= "https://striveschool-api.herokuapp.com/api/movies/";
-        let urlParams = new URLSearchParams(window.location.search);
-        id= urlParams.get("id");
-        console.log(id);
-
-        try{
-            let response = await fetch(url+id, {
-                method: "GET",
-                headers: new Headers({
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFlNTQ0YWFkOGMzODAwMTc1YTMxY2YiLCJpYXQiOjE2MDUyNjAzNjIsImV4cCI6MTYwNjQ2OTk2Mn0.Qe51Dg0cpT3EV5GhnBW7AtIG0OelpjrPj-4xtzNSrxY",
-                }),
-            });
-            let film = await response.json();
-            console.log(film);
-        }catch(e){
-            console.log(e);
+            imageDiv.innerHTML = `<img src="${image} width="300"  /> `;
+            detailDiv.innerHTML = `<span>${title}</span><span>${category}</span>
+        <p>${description}</p>`;
         }
-    }
-</script>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>

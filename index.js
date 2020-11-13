@@ -19,13 +19,14 @@ async function getMovie(genre){
             "col-lg-2",
             "mx-auto",
             "text-center",
+            "single-col"
             
             );
             col.innerHTML= `
             <div class="col-film">
             <img src=${e.imageUrl} class="img-fluid">
-            <a href="backoffice.html?id=${e._id}"><p class="film-title">${e.name}</p></a>
-            <a href="detail.html?id=${e._id}" class="film-details"><p class="film-details">See more..</p></a>
+            <a href="backoffice.html?id=${e._id}|${e.category}" style="color:#fff"><p class="film-title">${e.name}</p></a>
+            <a href="detail.html?id=${e.title}|${e.category}|${e.description}|${e.imageUrl}" class="film-details" style="color:#fff"><p class="film-details">See more..</p></a>
             </div>
          `
          movieContainer.appendChild(col);
@@ -63,10 +64,15 @@ async function getSerie(){
             "col-md-6",
             "col-lg-2",
             "mx-auto",
-            "text-center"
+            "text-center",
+            "col-song",
             );
             col.innerHTML= `
+            <div class="col-film">
             <img src=${e.imageUrl} class="img-fluid">
+            <a href="backoffice.html?id=${e._id}|${e.category}" style="color:#fff"><p class="film-title">${e.name}</p></a>
+            <a href="detail.html?id=${e.title}|${e.category}|${e.description}|${e.imageUrl}" class="film-details" style="color:#fff"><p class="film-details">See more..</p></a>
+            </div>
          `
          seriesContainer.appendChild(col);
            });
@@ -104,10 +110,15 @@ async function getFantasyMovie(){
             "col-md-6",
             "col-lg-2",
             "mx-auto",
-            "text-center"
+            "text-center",
+            "col-song2",
             );
             col.innerHTML= `
+            <div class="col-film">
             <img src=${e.imageUrl} class="img-fluid">
+            <a href="backoffice.html?id=${e._id}|${e.category}" style="color:#fff"><p class="film-title">${e.name}</p></a>
+            <a href="detail.html?id=${e.title}|${e.category}|${e.description}|${e.imageUrl}" class="film-details" style="color:#fff"><p class="film-details">See more..</p></a>
+            </div>
          `
          fantasyContainer.appendChild(col);
            });

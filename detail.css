@@ -1,0 +1,44 @@
+body{
+    background-color: #2c2c2c;
+    font-family: 'Noto Sans', sans-serif;
+    color: #fff;
+    overflow-x:hidden;
+}
+/*navbar start*/
+nav{
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 4px -3px #3a3a3aa8;
+ 
+}
+.navbar{
+    padding: 0 16px!important;
+    position: fixed;
+    width: 100%;
+    top:0;
+    z-index: 200;
+}
+.form-inline i,
+.nav-link{
+    color: #fff!important;
+}
+.form-inline img{
+    margin-left:20px;
+}
+.navbar-toggler{
+    color:white;
+    border: 1px solid transparent!important;
+}
+.navbar-toggler i{
+    color:white;
+    font-size: 27px;
+}
+@media (max-width: 988px){
+  
+    .nav-link{
+        padding-bottom:20px;
+    }
+
+}
+
+/*navbar end*
+

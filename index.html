@@ -16,6 +16,11 @@
 </head>
 
 <body>
+  <div class="loader-wrapper" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+    <div class="spinner-border text-danger" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <!--NAVBAR START-->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand mt-5" href="#"><a href="https://fontmeme.com/netflix-font/"><img
@@ -37,7 +42,7 @@
           <a class="nav-link" href="#">Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Recently Added</a>
+          <a class="nav-link" href="backoffice.html">Add</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">My list</a>
@@ -71,27 +76,26 @@
   <div class="container-fluid ">
     <h5 class="sm-text-center mt-3">Horror Movies</h5>
 
-    <div class="row movieContainer">
-     
+    <div class="movieContainer">
+
     </div>
   </div>
 
 
-  <div class="container-fluid">
+  <div class="container-fluid mt-5">
     <h5 class="sm-text-center mt-4">Most watched series</h5>
+    <div class="seriesContainer"></div>
 
-    <div class="row seriesContainer">
-     
-    </div>
   </div>
 
 
-  <div class="container-fluid">
+  <div class="container-fluid mt-5">
     <h5 class="sm-text-center mt-4">Fantasy</h5>
-    <div class="row fantasyContainer">
-      
+    <div class="fantasyContainer">
+
     </div>
   </div>
+  <div id="songs"></div>
   <!--TRENDING MOVIES SECTION END-->
 
 
@@ -133,7 +137,17 @@
   <!--FOOTER END-->
 
 
-
+  <script>
+    document.onreadystatechange = function () {
+      if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.querySelector(".loader-wrapper").style.visibility = "visible";
+      } else {
+        document.querySelector(".loader-wrapper").style.display = "none";
+        document.querySelector("body").style.visibility = "visible";
+      }
+    };
+  </script>
   <!-- Optional JavaScript -->
   <script src="index.js"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
