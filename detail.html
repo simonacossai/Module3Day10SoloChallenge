@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row detailDiv">
+
+        </div>
+    </div>
+
+
+
+
+
+
+<script>
+    window.onload = async ()=>{
+        let id;
+        const url= "https://striveschool-api.herokuapp.com/api/movies/";
+        let urlParams = new URLSearchParams(window.location.search);
+        id= urlParams.get("id");
+        console.log(id);
+
+        try{
+            let response = await fetch(url+id, {
+                method: "GET",
+                headers: new Headers({
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFlNTQ0YWFkOGMzODAwMTc1YTMxY2YiLCJpYXQiOjE2MDUyNjAzNjIsImV4cCI6MTYwNjQ2OTk2Mn0.Qe51Dg0cpT3EV5GhnBW7AtIG0OelpjrPj-4xtzNSrxY",
+                }),
+            });
+            let film = await response.json();
+            console.log(film);
+        }catch(e){
+            console.log(e);
+        }
+    }
+</script>
+</body>
+</html>
